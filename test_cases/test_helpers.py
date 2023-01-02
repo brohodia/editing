@@ -6,6 +6,7 @@ import test_cases.helpers as test_hlp
 from algorithms.unit_test.helpers import Util
 import algorithms.helpers as hlp
 import libraries.helper_functions.algorithms.dotdict as lib
+from typing import List, Union, Any
 
 
 # Tries to import HX package
@@ -143,4 +144,32 @@ def test_set_hxd_values_from_dict(hxd,run_data):
     # Populate dict
     temp_dict = hlp.set_hxd_values_from_dict(
         hxd_object = ins_int.aircraftGroupAirlines,
-        input_dict=group_df_dict)  
+        input_dict=group_df_dict) 
+
+def test_divide():
+    """safe divide that checks for non-zero denomninator"""
+    assert test_hlp.divide(10,2)==5
+
+def test_set_mult_values():
+    class testclass1:
+        def __init__(self):
+            self.name = 'Alice'
+            self.age = 25
+            self.height = 150
+
+    class testclass2:
+        def __init__(self):
+            self.name = 'Bob'
+            self.age = 30
+            
+    obj1 = testclass1()
+    obj2 = testclass2()
+    values_to_set = ['name','age']
+
+    test_hlp.set_mult_values(values_to_set,obj1,obj2)
+    assert obj1.name == 'Bob'
+    assert obj1.age == 30
+    assert obj1.height == 150
+
+
+

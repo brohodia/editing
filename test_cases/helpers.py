@@ -3,7 +3,7 @@ import pandas as pd
 import math
 from datetime import datetime
 import libraries.helper_functions.algorithms.dotdict as lib
-
+from typing import List, Union, Any
 from dataclasses import dataclass
 from typing import Optional
 
@@ -131,3 +131,24 @@ def set_hxd_values_from_dict(
         except:
             if hasattr(hxd_object,key):
                 setattr(hxd_object,key,value)
+
+def divide(numerator: float, denom: float):
+    """safe divide that checks for non-zero denomninator"""
+
+    if numerator is None or denom is None:
+        return None
+    elif denom != 0:
+        return numerator / denom
+    else:
+        return None
+
+
+def set_mult_values(
+    values_to_set: List[str],
+    obj_to_set,
+    obj_to_fetch,
+) -> None:
+    """set mulitple values for object from an object"""
+
+    for val in values_to_set:
+        setattr(obj_to_set, val, getattr(obj_to_fetch, val, None))

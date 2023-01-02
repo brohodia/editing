@@ -153,3 +153,23 @@ def set_hxd_values_from_dict(
         except:
             if hasattr(hxd_object,key):
                 setattr(hxd_object,key,value)
+
+def divide(numerator: float, denom: float):
+    """safe divide that checks for non-zero denomninator"""
+
+    if numerator is None or denom is None:
+        return None
+    elif denom != 0:
+        return numerator / denom
+    else:
+        return None
+
+def divide(numerator: float, denom: float):
+    """safe divide that checks for non-zero denomninator"""
+
+    if numerator is None or denom is None:
+        return None
+    elif denom != 0:
+        return numerator / denom
+    else:
+        return None
